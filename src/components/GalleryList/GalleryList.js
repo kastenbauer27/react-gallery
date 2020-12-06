@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import GalleryItem from '../GalleryItem/GalleryItem';
 
 class GalleryList extends Component {
     state = {  }
@@ -7,7 +8,7 @@ class GalleryList extends Component {
             <div className="GalleryList">
                 <p>GalleryList</p>
                 {this.props.gallery.map(photo => (
-                <img key={photo.id} src={photo.path} />
+                <GalleryItem photo={photo} key={photo.id} />
                 ))}
             </div>
          );
