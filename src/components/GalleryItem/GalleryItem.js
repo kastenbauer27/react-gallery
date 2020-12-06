@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './GalleryItem.css';
+import axios from 'axios';
 
 class GalleryItem extends Component {
     state = { 
@@ -9,9 +10,15 @@ class GalleryItem extends Component {
 
     likePhoto = () => {
         console.log('clicked like photo button');
-        this.setState({
-            photoLikes: this.state.photoLikes + 1
-        });
+        axios.put(`/gallery/like/${this.props.photo.id}`)
+        .then(res => {
+            this.setState({
+                photoLikes: this.state.photoLikes + 1
+            });
+        }).catch(err => {
+            console.log('error in liking photo', err);
+            alert('Unable to like photo right now, please try again later.')
+        })
     }
 
     toggleDescription = () => {

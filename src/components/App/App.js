@@ -26,6 +26,17 @@ class App extends Component {
     })
   }
 
+  addLikes = () => {
+    console.log('adding likes in server');
+    // axios.put(`/gallery/like/${photo.id}`)
+    // .then(res => {
+    //     this.getPhotoGallery();
+    // }).catch(err => {
+    //     console.log('error in liking photo', err);
+    //     alert('Unable to like photo right now, please try again later.')
+    // })
+}
+
   render() {
     // test that state is changing correctly after get request
     console.log(this.state);
@@ -36,7 +47,7 @@ class App extends Component {
           <h1 className="App-title">Gallery of my life</h1>
         </header>
         <br/>
-        <GalleryList gallery={this.state.photoGallery}/>
+        <GalleryList gallery={this.state.photoGallery} addLikes={this.props.addLikes}/>
       </div>
     );
   }
